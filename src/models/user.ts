@@ -6,17 +6,15 @@ export interface User {
   stats: {
     current_streak_in_days: number;
     skills: {
-      math: SkillInfo;
-      reading: SkillInfo;
-      speaking: SkillInfo;
-      writing: SkillInfo;
+      [key: string]: SkillInfo;
     };
     total_sessions_played: number;
   };
+  error?: string;
 }
 
 export interface SkillInfo {
   current: number;
-  level: number;
+  level: string;
   max: number;
 }

@@ -1,0 +1,49 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  color: white;
+  font-size: 1.25rem;
+  left: -100px;
+}
+
+.back:hover {
+  color: grey;
+}
+
+.profile-header {
+  width: 100%;
+  text-align: left;
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.profile-info {
+  text-align: left;
+  display: inline-block;
+  margin-left: 4rem;
+  vertical-align: middle;
+}
+
+.profile h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.profile p {
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.profile-stats {
+  margin-top: 2rem;
+}
