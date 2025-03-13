@@ -23,7 +23,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
 
   const fetchUsers = async () => {
-    console.log(users);
     setIsLoading(true);
     setError(null);
 
@@ -44,7 +43,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const fetchUserById = async (id: string) => {
-    console.log(users);
     const user = users?.find((u) => u.id === parseInt(id, 10));
 
     if (user) {

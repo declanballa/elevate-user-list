@@ -4,9 +4,10 @@ import '../styles/Skill.css';
 interface SkillProps {
   name: string;
   info: SkillInfo;
+  hideLabels?: boolean;
 }
 
-const Skill = ({ name, info }: SkillProps) => {
+const Skill = ({ name, info, hideLabels = false }: SkillProps) => {
   const getSkillColor = (name: string) => {
     if (name === 'writing') {
       return '#0a91a7';
@@ -27,12 +28,13 @@ const Skill = ({ name, info }: SkillProps) => {
         className='current'
         style={{
           width: (info.current / info.max) * 100 + '%',
-          backgroundColor: getSkillColor(name)
+          backgroundColor: getSkillColor(name),
+          color: hideLabels ? getSkillColor(name) : 'inherit'
         }}
       >
-        {info.current}
+        {!hideLabels ? info.current : '_'}
       </span>
-      <span className='max'>{info.max}</span>
+      <span className='max'>{!hideLabels && info.max}</span>
     </li>
   );
 };
