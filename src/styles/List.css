@@ -20,7 +20,7 @@ li.user:hover > img {
   transition: transform 0.3s;
 }
 
-.user > img {
+img {
   width: 65px;
   height: 65px;
   border-radius: 50%;
