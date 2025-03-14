@@ -1,20 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 
 import { User } from '../models/user';
-import '../styles/List.css';
 import { useUsers } from '../contexts/UserContext';
-import { useEffect } from 'react';
+import '../styles/List.css';
 
 function List() {
   document.title = 'Users';
   const navigate = useNavigate();
-  const { users, isLoading, error, fetchUsers } = useUsers();
-
-  useEffect(() => {
-    if (!users) {
-      fetchUsers();
-    }
-  }, []);
+  const { users, isLoading, error } = useUsers();
 
   const handleUserClick = (id: number) => {
     navigate(`/users/${id}`);

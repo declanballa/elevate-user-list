@@ -8,6 +8,10 @@ import Carousel from './pages/Carousel';
 function App() {
   return (
     <div className='App'>
+      <div className='header'>
+        <a href='/users'>User List</a>
+        <a href='/users/carousel'>Carousel</a>
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<RedirectToUsers />} />

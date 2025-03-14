@@ -18,7 +18,7 @@ function Profile() {
     if (id) {
       fetchUserById(id);
     }
-  }, [id]);
+  }, [id, fetchUserById]);
 
   const handleBackClick = () => {
     navigate(`/users`);

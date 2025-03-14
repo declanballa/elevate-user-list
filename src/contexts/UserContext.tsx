@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 import { fetchUserIds, getUserById } from '../services/api';
 import { User } from '../models/user';
@@ -21,6 +21,12 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!users) {
+      fetchUsers();
+    }
+  }, [users]);
 
   const fetchUsers = async () => {
     setIsLoading(true);

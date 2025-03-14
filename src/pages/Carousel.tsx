@@ -1,21 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { useUsers } from '../contexts/UserContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import '../styles/Carousel.css';
+
+import { useUsers } from '../contexts/UserContext';
 import Skill from '../components/Skill';
+import '../styles/Carousel.css';
 
 function Carousel() {
-  const { users, error, fetchUsers } = useUsers();
+  const { users, error } = useUsers();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    if (!users) {
-      fetchUsers();
-    }
-  }, []);
-
-  // Enable smooth horizontal mouse scrolling
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -24,20 +18,7 @@ function Carousel() {
       if (event.deltaY === 0) return; // Ignore vertical scrolling
       event.preventDefault(); // Prevent page scrolling
       carousel.scrollLeft += event.deltaY * 2; // Increase scroll speed
-    };
 
-    carousel.addEventListener('wheel', handleWheelScroll, { passive: false });
-    return () => {
-      carousel.removeEventListener('wheel', handleWheelScroll);
-    };
-  }, [users]);
-
-  // Detect which item is in the center
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const handleScroll = () => {
       const { scrollLeft } = carousel;
       const itemWidth = 500 + 96; // width + gap
       const centerIndex = Math.round(scrollLeft / itemWidth);
@@ -47,9 +28,9 @@ function Carousel() {
       }
     };
 
-    carousel.addEventListener('scroll', handleScroll);
+    carousel.addEventListener('wheel', handleWheelScroll);
     return () => {
-      carousel.removeEventListener('scroll', handleScroll);
+      carousel.removeEventListener('wheel', handleWheelScroll);
     };
   }, [activeIndex, users]);
 
