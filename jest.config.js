@@ -8,5 +8,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': '<rootDir>/jest.mock.js'
   },
-  setupFilesAfterEnv: ['@testing-library/jest-dom']
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js']
 };

@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "module": "NodeNext",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "baseUrl": "./src"
   }
 }
